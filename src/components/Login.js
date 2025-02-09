@@ -14,9 +14,9 @@ const Login = () => {
   const submitHandler = (event)=>{
     event.preventDefault();
     setLoading(true);
-    axios.post('http://localhost:4200/user/signup',{
-      email:email,
-      password:password
+    axios.post('http://localhost:4200/user/login', {
+      email: email,
+      password: password
     })
     .then(res=>{
       setLoading(false);
@@ -57,7 +57,7 @@ const Login = () => {
             <h1>Login With Your Account</h1>
             <input required onChange ={e=>{setEmail(e.target.value)}}type = 'email' placeholder='Email'/>
             <input required onChange ={e=>{setPassword(e.target.value)}}type = 'password' placeholder='Password'/>
-            <button type='submit'> {isLoading && <i class="fa-solid fa-spinner fa-spin-pulse"></i>}Submit</button>
+            <button type='submit'> {isLoading && <i className="fa-solid fa-spinner fa-spin-pulse"></i>}Submit</button>
             <Link className='link' to='/signup'>Create Your Account</Link>
           </form>
         </div>

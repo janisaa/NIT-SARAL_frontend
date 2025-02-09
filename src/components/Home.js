@@ -9,29 +9,30 @@ const Home = () => {
   const [students, setStudents] = useState([]);
   const [fees, setFees] = useState([]);
 
+ 
   useEffect(() => {
     getHomeDetails();
   }, []);
-  const getHomeDetails = () => {
-    axios
-      .get("http://localhost:4200/course/home/", {
+
+  const getHomeDetails = async () => {
+    try {
+      const res = await axios.get("http://localhost:4200/course/home/", {
         headers: {
-          Authorization: "Bearer" + localStorage.getItem("token"),
+          Authorization: `Bearer ${localStorage.getItem("token")}`, 
         },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setTotalCourse(res.data.totalCourse);
-        setTotalStudents(res.data.totalStudents);
-        setStudents(res.data.students);
-        setFees(res.data.fees);
-        setAmount(res.data.totalAmount);
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("something is wrong...");
       });
+      console.log(res.data);
+      setTotalCourse(res.data.totalCourse);
+      setTotalStudents(res.data.totalStudent); 
+      setStudents(res.data.students);
+      setFees(res.data.feeRecords || []); 
+      setAmount(res.data.totalAmount);
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong...");
+    }
   };
+
   return (
     <div className="home-wrapper">
       <div className="count-box-wrapper">
