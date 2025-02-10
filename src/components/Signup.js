@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { use , useState } from "react";
+=======
+import React, { use, useState } from "react";
+>>>>>>> aa1a53998f35465531bf4cf59d1f07e2962b0a65
 import "../components/style.css";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -24,7 +28,12 @@ const Signup = () => {
     formData.append("phone", phone);
     formData.append("password", password);
     formData.append("image", image);
+<<<<<<< HEAD
     axios.post("http://localhost:4200/user/signup", formData)
+=======
+    axios
+      .post("http://localhost:4200/user/signup", formData)
+>>>>>>> aa1a53998f35465531bf4cf59d1f07e2962b0a65
       .then((res) => {
         setLoading(false);
         toast.success("your account is created...");
@@ -116,4 +125,8 @@ const Signup = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Signup;
+=======
+export default Signup;
+>>>>>>> aa1a53998f35465531bf4cf59d1f07e2962b0a65
