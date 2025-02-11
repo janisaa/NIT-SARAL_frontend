@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import "../components/style.css";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -24,17 +24,18 @@ const Signup = () => {
     formData.append("phone", phone);
     formData.append("password", password);
     formData.append("image", image);
+
     axios
       .post("http://localhost:4200/user/signup", formData)
       .then((res) => {
         setLoading(false);
-        toast.success("your account is created...");
+        toast.success("Your account has been created.");
         navigate("/login");
         console.log(res);
       })
       .catch((err) => {
         setLoading(false);
-        toast.error("something is wrong...");
+        toast.error("Something went wrong.");
         console.log(err);
       });
   };
@@ -66,45 +67,32 @@ const Signup = () => {
             <h1>Create Your Account</h1>
             <input
               required
-              onChange={(e) => {
-                setFullName(e.target.value);
-              }}
+              onChange={(e) => setFullName(e.target.value)}
               type="text"
-              placeholder="Institute Name"
+              placeholder="Full Name"
             />
             <input
               required
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Email"
             />
             <input
               required
-              onChange={(e) => {
-                setPhone(e.target.value);
-              }}
+              onChange={(e) => setPhone(e.target.value)}
               type="text"
               placeholder="Phone"
             />
             <input
               required
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Password"
             />
             <input required onChange={fileHandler} type="file" />
-            {imageUrl && (
-              <img className="your-logo" alt="your logo" src={imageUrl} />
-            )}
+            {imageUrl && <img className="your-logo" alt="your logo" src={imageUrl} />}
             <button type="submit">
-              {" "}
-              {isLoading && (
-                <i className="fa-solid fa-spinner fa-spin-pulse"></i>
-              )}
+              {isLoading && <i className="fa-solid fa-spinner fa-spin-pulse"></i>}
               Submit
             </button>
             <Link className="link" to="/login">

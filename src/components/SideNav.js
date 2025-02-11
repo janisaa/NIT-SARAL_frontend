@@ -23,8 +23,8 @@ const SideNav = () => {
             <Link to ='/dashboard/payment-history' className={location.pathname === '/dashboard/payment-history'?'menu-active-link':'menu-link'}><i className="fa-solid fa-list"></i>Payment History</Link>
         </div>
         <div className='contact-us'>
-            <p><i class="fa-solid fa-address-card"></i>Contact Developer</p>
-            <p><i class="fa-solid fa-phone"></i>9876543210</p>
+            <p><i className="fa-solid fa-address-card"></i>Contact Developer</p>
+            <p><i className="fa-solid fa-phone"></i>9876543210</p>
         </div>
     </div>
   )

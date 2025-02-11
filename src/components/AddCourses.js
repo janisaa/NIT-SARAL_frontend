@@ -58,7 +58,7 @@ const AddCourses = () => {
           formData,
           {
             headers: {
-              Authorization: "Bearer" + localStorage.getItem("token"),
+              Authorization: "Bearer " + localStorage.getItem("token"),
             },
           }
         )
@@ -74,10 +74,10 @@ const AddCourses = () => {
           toast.error("something is wrong...");
         });
     } else {
-      axios
-        .post("http://localhost:4200/course/add-course", formData, {
+      axios.post("http://localhost:4200/course/add-course", formData, {
           headers: {
-            Authorization: "Bearer" + localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "multipart/form-data",
           },
         })
         .then((res) => {

@@ -41,7 +41,7 @@ const AddStudent = () => {
     axios
       .get("http://localhost:4200/course/all-courses", {
         headers: {
-          Authorization: "Bearer" + localStorage.getItem("token"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -76,7 +76,7 @@ const AddStudent = () => {
           formData,
           {
             headers: {
-              Authorization: "Bearer" + localStorage.getItem("token"),
+              Authorization: "Bearer " + localStorage.getItem("token"),
             },
           }
         )
@@ -95,7 +95,7 @@ const AddStudent = () => {
       axios
         .post("http://localhost:4200/student/add-student", formData, {
           headers: {
-            Authorization: "Bearer" + localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         })
         .then((res) => {
