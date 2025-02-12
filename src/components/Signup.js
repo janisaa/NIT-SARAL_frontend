@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import "../components/style.css";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -24,7 +24,6 @@ const Signup = () => {
     formData.append("phone", phone);
     formData.append("password", password);
     formData.append("image", image);
-
     axios
       .post("http://localhost:4200/user/signup", formData)
       .then((res) => {
