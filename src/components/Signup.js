@@ -28,13 +28,13 @@ const Signup = () => {
       .post("http://localhost:4200/user/signup", formData)
       .then((res) => {
         setLoading(false);
-        toast.success("your account is created...");
+        toast.success("Your account has been created.");
         navigate("/login");
         console.log(res);
       })
       .catch((err) => {
         setLoading(false);
-        toast.error("something is wrong...");
+        toast.error("Something went wrong.");
         console.log(err);
       });
   };
@@ -50,7 +50,7 @@ const Signup = () => {
         <div className="signup-left">
           <img
             alt="logo"
-            src={require("../assets/nits_1.jpg")}
+            src={require("../assets/unnamed.jpg")}
             style={{
               width: "80%",
               maxWidth: "450px",
@@ -66,33 +66,25 @@ const Signup = () => {
             <h1>Create Your Account</h1>
             <input
               required
-              onChange={(e) => {
-                setFullName(e.target.value);
-              }}
+              onChange={(e) => setFullName(e.target.value)}
               type="text"
-              placeholder="Institute Name"
+              placeholder="Full Name"
             />
             <input
               required
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Email"
             />
             <input
               required
-              onChange={(e) => {
-                setPhone(e.target.value);
-              }}
+              onChange={(e) => setPhone(e.target.value)}
               type="text"
               placeholder="Phone"
             />
             <input
               required
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Password"
             />
@@ -101,7 +93,6 @@ const Signup = () => {
               <img className="your-logo" alt="your logo" src={imageUrl} />
             )}
             <button type="submit">
-              {" "}
               {isLoading && (
                 <i className="fa-solid fa-spinner fa-spin-pulse"></i>
               )}

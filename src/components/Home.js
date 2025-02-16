@@ -12,26 +12,26 @@ const Home = () => {
   useEffect(() => {
     getHomeDetails();
   }, []);
-  const getHomeDetails = () => {
-    axios
-      .get("http://localhost:4200/course/home/", {
+
+  const getHomeDetails = async () => {
+    try {
+      const res = await axios.get("http://localhost:4200/course/home/", {
         headers: {
-          Authorization: "Bearer" + localStorage.getItem("token"),
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setTotalCourse(res.data.totalCourse);
-        setTotalStudents(res.data.totalStudents);
-        setStudents(res.data.students);
-        setFees(res.data.fees);
-        setAmount(res.data.totalAmount);
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("something is wrong...");
       });
+      console.log(res.data);
+      setTotalCourse(res.data.totalCourse);
+      setTotalStudents(res.data.totalStudent);
+      setStudents(res.data.students);
+      setFees(res.data.feeRecords || []);
+      setAmount(res.data.totalAmount);
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong...");
+    }
   };
+
   return (
     <div className="home-wrapper">
       <div className="count-box-wrapper">
@@ -43,10 +43,10 @@ const Home = () => {
           <h2>00{totalStudents}</h2>
           <p>Students</p>
         </div>
-        <div className="box box3">
+        {/* <div className="box box3">
           <h2>Rs {totalAmount}</h2>
           <p>Total Amount</p>
-        </div>
+        </div> */}
       </div>
       <div className="list-container">
         <div className="table-container">
@@ -87,7 +87,7 @@ const Home = () => {
             <p>No Student is here</p>
           )}
         </div>
-        <div className="table-container">
+        {/* <div className="table-container">
           {fees.length > 0 ? (
             <table>
               <thead>
@@ -112,7 +112,7 @@ const Home = () => {
           ) : (
             <p>No Payment History is here...</p>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

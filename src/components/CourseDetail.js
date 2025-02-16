@@ -18,7 +18,7 @@ const CourseDetail = () => {
     axios
       .get("http://localhost:4200/course/course-detail/" + params.id, {
         headers: {
-          Authorization: "Bearer" + localStorage.getItem("token"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -38,7 +38,7 @@ const CourseDetail = () => {
       axios
         .delete("http://localhost:4200/course/" + courseId, {
           headers: {
-            Authorization: "Bearer" + localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         })
         .then((res) => {
@@ -63,7 +63,7 @@ const CourseDetail = () => {
             />
             <div className="course-detail-text">
               <h1>{course.courseName}</h1>
-              <p>Price :- {course.price}</p>
+              <p>Credits :- {course.credits}</p>
               <p>Starting Date :- {course.startingDate}</p>
               <p>End Date :- {course.endDate}</p>
             </div>

@@ -19,7 +19,7 @@ const StudentDetail = () => {
     axios
       .get("http://localhost:4200/student/student-detail/" + params.id, {
         headers: {
-          Authorization: "Bearer" + localStorage.getItem("token"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -39,7 +39,7 @@ const StudentDetail = () => {
       axios
         .delete("http://localhost:4200/student/" + studentId, {
           headers: {
-            Authorization: "Bearer" + localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         })
         .then((res) => {

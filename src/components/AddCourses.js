@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const AddCourses = () => {
   const [courseName, setCourseName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [credits, setCredits] = useState("");
   const [startingDate, setStartingDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [image, setImage] = useState(null);
@@ -23,14 +23,14 @@ const AddCourses = () => {
       console.log(location.state.course);
       setCourseName(location.state.course.courseName);
       setDescription(location.state.course.description);
-      setPrice(location.state.course.price);
+      setCredits(location.state.course.credits);
       setStartingDate(location.state.course.startingDate);
       setEndDate(location.state.course.endDate);
       setImageUrl(location.state.course.imageUrl);
     } else {
       setCourseName("");
       setDescription("");
-      setPrice(0);
+      setCredits(0);
       setStartingDate("");
       setEndDate("");
       setImageUrl("");
@@ -43,7 +43,7 @@ const AddCourses = () => {
     const formData = new FormData();
     formData.append("courseName", courseName);
     formData.append("description", description);
-    formData.append("price", price);
+    formData.append("credits", credits);
     formData.append("startingDate", startingDate);
     formData.append("endDate", endDate);
 
@@ -58,7 +58,7 @@ const AddCourses = () => {
           formData,
           {
             headers: {
-              Authorization: "Bearer" + localStorage.getItem("token"),
+              Authorization: "Bearer " + localStorage.getItem("token"),
             },
           }
         )
@@ -77,7 +77,8 @@ const AddCourses = () => {
       axios
         .post("http://localhost:4200/course/add-course", formData, {
           headers: {
-            Authorization: "Bearer" + localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "multipart/form-data",
           },
         })
         .then((res) => {
@@ -122,12 +123,12 @@ const AddCourses = () => {
           type="text"
         />
         <input
-          value={price}
+          value={credits}
           required
           onChange={(e) => {
-            setPrice(e.target.value);
+            setCredits(e.target.value);
           }}
-          placeholder="Price"
+          placeholder="Credits"
           type="number"
         />
         <input

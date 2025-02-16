@@ -15,7 +15,7 @@ const Students = () => {
     axios
       .get("http://localhost:4200/student/all-students", {
         headers: {
-          Authorization: "Bearer" + localStorage.getItem("token"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((res) => {
