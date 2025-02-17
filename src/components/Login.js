@@ -42,7 +42,7 @@ const Login = () => {
         <div className="signup-left">
           <img
             alt="logo"
-            src={require("../assets/unnamed.jpg")}
+            src={require("../assets/nits_1.jpg")}
             style={{
               width: "80%",
               maxWidth: "450px",
