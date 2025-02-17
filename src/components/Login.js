@@ -50,7 +50,7 @@ const Login = () => {
             }}
           />
           <h1 className="signup-left-heading">NIT-SARAL</h1>
-          <p className="signup-left-para">One-stop platform for students</p>
+          // <p className="signup-left-para">One-stop platform for students</p>
         </div>
         <div className="signup-right">
           <hr />
